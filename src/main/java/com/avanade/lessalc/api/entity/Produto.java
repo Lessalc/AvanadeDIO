@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class Produto {
 
-    private Integer codigo;
+    private Long codigo;
 
     private String descricao;
 

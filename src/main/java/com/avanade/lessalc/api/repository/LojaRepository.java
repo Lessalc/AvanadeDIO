@@ -3,5 +3,5 @@
 //import com.avanade.lessalc.api.entity.Loja;
 //import org.springframework.data.jpa.repository.JpaRepository;
 //
-//public interface LojaRepository extends JpaRepository<Loja, Integer> {
+//public interface LojaRepository extends JpaRepository<Loja, Long> {
 //}
