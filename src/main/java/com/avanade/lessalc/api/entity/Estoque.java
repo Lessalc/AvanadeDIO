@@ -3,17 +3,24 @@ package com.avanade.lessalc.api.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-//import javax.persistence.Entity;
-//
-//
-//@Entity
+import javax.persistence.*;
+
+
+@Entity
+@IdClass(EstoqueId.class)
 @Data
 @AllArgsConstructor
 public class Estoque {
 
-    private Produto produto;
+    @Id
+    @ManyToOne
+    @JoinColumn(name="Codigo_Produto", nullable = false)
+    private Produto codigoProduto;
 
-    private Loja loja;
+    @Id
+    @ManyToOne
+    @JoinColumn(name="Codigo_Loja", nullable = false)
+    private Loja codigoFilial;
 
-    private Long quantidade;
+    private Integer quantidade;
 }

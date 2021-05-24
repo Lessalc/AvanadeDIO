@@ -12,9 +12,9 @@ public class LojaService {
 
     public List<Loja> findAll(){
         List<Loja> listLoja = new ArrayList<>();
-        Loja loja1 = new Loja(1L, "Loj_001", false);
-        Loja loja2 = new Loja(2L, "Loj_002", true);
-        Loja loja3 = new Loja(3L, "Loj_003", false);
+        Loja loja1 = new Loja(1, "Loj_001", false);
+        Loja loja2 = new Loja(2, "Loj_002", true);
+        Loja loja3 = new Loja(3, "Loj_003", false);
         listLoja.add(loja1);
         listLoja.add(loja2);
         listLoja.add(loja3);
