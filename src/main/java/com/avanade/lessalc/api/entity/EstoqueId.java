@@ -1,6 +1,8 @@
 package com.avanade.lessalc.api.entity;
 
-public class EstoqueId {
+import java.io.Serializable;
+
+public class EstoqueId implements Serializable {
 
     private Integer codigoProduto;
     private Integer codigoFilial;

@@ -1,8 +1,11 @@
 package com.avanade.lessalc.api.services;
 
 import com.avanade.lessalc.api.entity.Produto;
+import com.avanade.lessalc.api.repository.ProdutoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,13 +13,11 @@ import java.util.List;
 @Service
 public class ProdutoService {
 
+    @Autowired
+    private ProdutoRepository produtoRepository;
+
     public List<Produto> findAll(){
-        List<Produto> listaProduto = new ArrayList<>();
-        Produto p1 = new Produto(1, "Descricao 01", new Date(), "123456789", true);
-        Produto p2 = new Produto(2, "Descricao 02", new Date(), "987654321", true);
-        listaProduto.add(p1);
-        listaProduto.add(p2);
-        return listaProduto;
+        return produtoRepository.findAll();
     }
 
     public void inserir(Produto produto) {
@@ -30,4 +31,21 @@ public class ProdutoService {
     public void excluir(Long id) {
         System.out.println("Excluido: "+id);
     }
+
+    private List<Produto> geraLista(){
+        List<Produto> listaProduto = new ArrayList<Produto>();
+        Produto p1 = geraItem(1, "123456789");
+        Produto p2 = geraItem(2, "987654321");
+        listaProduto.add(p1);
+        listaProduto.add(p2);
+        return listaProduto;
+    }
+
+    public Produto geraItem(int id, String ean){
+        return new Produto(id, "Descricao "+id, LocalDate.now(), ean, false);
+
+    }
+
+
+
 }

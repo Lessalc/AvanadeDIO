@@ -2,6 +2,8 @@ package com.avanade.lessalc.api.services;
 
 
 import com.avanade.lessalc.api.entity.Loja;
+import com.avanade.lessalc.api.repository.LojaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,15 +12,11 @@ import java.util.List;
 @Service
 public class LojaService {
 
+    @Autowired
+    private LojaRepository lojaRepository;
+
     public List<Loja> findAll(){
-        List<Loja> listLoja = new ArrayList<>();
-        Loja loja1 = new Loja(1, "Loj_001", false);
-        Loja loja2 = new Loja(2, "Loj_002", true);
-        Loja loja3 = new Loja(3, "Loj_003", false);
-        listLoja.add(loja1);
-        listLoja.add(loja2);
-        listLoja.add(loja3);
-        return listLoja;
+        return lojaRepository.findAll();
     }
 
     public void insert(Loja loja) {
@@ -33,4 +31,19 @@ public class LojaService {
     public void delete(Long id) {
         System.out.println("Loja deletada: ID: "+id);
     }
+
+
+    private List<Loja> geraLista(){
+        List<Loja> listaLoja = new ArrayList<Loja>();
+        Loja l1 = geraItem(1);
+        Loja l2 = geraItem(2);
+        listaLoja.add(l1);
+        listaLoja.add(l2);
+        return listaLoja;
+    }
+
+    public Loja geraItem(int id){
+        return new Loja(id, "nome" + id , false);
+    }
+
 }
